@@ -146,7 +146,7 @@ public class LMSTClock {
 
 	public static void help(){
 		HelpFormatter formater = new HelpFormatter();
-		formater.printHelp("CandyJar", options);
+		formater.printHelp("LMSTClock", options);
 	}
 	public static String getUTCString(LocalDateTime utcTime){
 		return utcTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd-kk:mm:ss.SSS"));
