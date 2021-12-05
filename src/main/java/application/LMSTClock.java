@@ -27,7 +27,7 @@ public class LMSTClock {
 	
 	private static double getGAST (double mjd){	// convert MJD in UT1 to a LAST
 
-		final int num_leap_seconds = 26;
+		final int num_leap_seconds = 31;
 		final double   tt_offset = 32.184;
 
 		double dt = (double) num_leap_seconds + tt_offset;
@@ -76,7 +76,7 @@ public class LMSTClock {
 		options.addOption(longitude);
 		options.addOption(help);
 		options.addOption(clockMode);
-		
+		// parse command line arguments
 		try {
 			commandLine = parser.parse(options, args);
 			if(hasOption(help)){
@@ -102,9 +102,7 @@ public class LMSTClock {
 				case "molonglo":
 					degLong=149.424658;
 					break;
-					
-					
-				
+
 				}
 			}
 			else {
@@ -115,23 +113,24 @@ public class LMSTClock {
 			e.printStackTrace();
 		}
 		
-			
+		// do-white loop - iterates once or infinite times based on -c argument. 	
 		do {
+			// get current UTC
 			LocalDateTime nowDateTime = LocalDateTime.now(Clock.systemUTC());
+			//convert to MJD
 			Double nowMJD = nowDateTime.getLong(JulianFields.MODIFIED_JULIAN_DAY)
 					+(nowDateTime.getHour()*3600
 					 + nowDateTime.getMinute()*60 
 					 + nowDateTime.getSecond()
 					 )/86400.0;
 			
+			// get and print LMST, add one second. 
 			try {	
 				Double degLMST = getDegLMST(nowMJD, degLong);
-				System.err.print("UTC:" + getUTCString(nowDateTime) + " LMST:"+ toHHMMSS(degLMST));
-				System.err.print("\r");
+				System.err.println("UTC:" + getUTCString(nowDateTime) + " LMST:"+ toHHMMSS(degLMST));
 				Thread.sleep(1000);
 				nowMJD = nowMJD + 1/86400.0;
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
