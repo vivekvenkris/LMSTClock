@@ -51,7 +51,7 @@ and install it in the usual way.
 
 #### From source
 
-Please download the `.tar.gz` file from https://www.oracle.com/java/technologies/javase-jdk15-downloads.html appropriate for Mac OSX
+Please download the `.tar.gz` file from https://www.oracle.com/java/technologies/javase-jdk15-downloads.html appropriate for Mac OSX. You will need to sign in / sign up for a free Oracle account.
 
 Run the following:
 ```shell
@@ -69,7 +69,7 @@ Add `JAVA_HOME` environment variable to the `.rc` file corresponding to your she
 `echo -n "\nexport JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-15.jdk/Contents/Home" >> ~/.bash_profile`
 
 
-Once, done, please either source your rc file again, or open a new terminal and check your default java version is 15.X. You will need to sign in / sign up for a free Oracle account. Running the following commands should show something similar. 
+Once, done, please either source your rc file again, or open a new terminal and check your default java version is 15.X.  Running the following commands should show something similar. 
 
 ```shell
  java -version
