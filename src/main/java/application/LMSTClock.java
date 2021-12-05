@@ -107,6 +107,10 @@ public class LMSTClock {
 				
 				}
 			}
+			else {
+				help();
+				System.exit(0);
+			}
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
